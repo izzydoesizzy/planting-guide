@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body bg-garden-50 text-earth-800 antialiased;
+    min-height: 100vh;
+  }
+
+  * {
+    @apply border-earth-200;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-garden-600 hover:bg-garden-700 text-white font-semibold px-4 py-2 rounded-garden
+           transition-all duration-200 shadow-garden hover:shadow-garden-lg active:scale-[0.97];
+  }
+
+  .btn-secondary {
+    @apply bg-earth-100 hover:bg-earth-200 text-earth-700 font-semibold px-4 py-2 rounded-garden
+           transition-all duration-200 border border-earth-300;
+  }
+
+  .card {
+    @apply bg-white rounded-garden shadow-garden p-4 border border-garden-100;
+  }
+
+  .grid-cell {
+    @apply w-16 h-16 border border-dashed border-earth-300 rounded-lg
+           flex items-center justify-center text-2xl cursor-pointer
+           transition-all duration-150 hover:bg-garden-50 hover:border-garden-400
+           relative select-none;
+  }
+
+  .grid-cell.occupied {
+    @apply border-solid border-garden-300 bg-garden-50;
+  }
+
+  .grid-cell.drag-over {
+    @apply bg-garden-100 border-garden-500 border-solid scale-105;
+  }
+
+  .plant-card {
+    @apply flex items-center gap-2 px-3 py-2 bg-white rounded-garden border border-earth-200
+           cursor-grab hover:shadow-garden hover:border-garden-300
+           transition-all duration-150 active:cursor-grabbing select-none;
+  }
+
+  .sun-indicator {
+    @apply text-sunflower-400 drop-shadow-lg;
+    animation: gentle-glow 3s ease-in-out infinite;
+  }
+
+  .section-title {
+    @apply text-xl font-bold text-garden-800 flex items-center gap-2;
+  }
+
+  .filter-chip {
+    @apply px-3 py-1 rounded-full text-sm font-semibold cursor-pointer
+           transition-all duration-150 border;
+  }
+
+  .filter-chip.active {
+    @apply bg-garden-600 text-white border-garden-600;
+  }
+
+  .filter-chip:not(.active) {
+    @apply bg-white text-earth-600 border-earth-300 hover:border-garden-400 hover:text-garden-700;
+  }
+}
+
+@keyframes gentle-glow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.4)); }
+  50% { filter: drop-shadow(0 0 16px rgba(250, 204, 21, 0.7)); }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.3s ease-out;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-garden-50 rounded-full;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-garden-300 rounded-full hover:bg-garden-400;
+}
